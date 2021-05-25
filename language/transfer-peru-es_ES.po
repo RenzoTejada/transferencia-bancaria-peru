@@ -1,0 +1,155 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Transferencia Bancaria Perú\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-25 00:11+0000\n"
+"PO-Revision-Date: 2021-05-25 00:25+0000\n"
+"Last-Translator: renzo tejada\n"
+"Language-Team: Español\n"
+"Language: es_ES\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.2; wp-5.7.2\n"
+"X-Domain: transfer-peru"
+
+#: rt_transfer_payment.php:155
+msgid "+ Add account"
+msgstr "+ Añadir cuenta"
+
+#. Description of the plugin
+#: rt_transfer_payment.php:20 rt_transfer_payment.php:102
+msgid ""
+"Accepts payments in person via CC or CCI. More commonly known as direct "
+"bank/wire transfer."
+msgstr ""
+"Acepta pagos en persona mediante CC o CCI. Más comúnmente conocido como "
+"transferencia bancaria directa/por cable."
+
+#: rt_transfer_payment.php:116
+msgid "Account details:"
+msgstr "Detalles de la cuenta:"
+
+#: rt_transfer_payment.php:125 rt_transfer_payment.php:299
+msgid "Account name"
+msgstr "Nombre de la cuenta"
+
+#: rt_transfer_payment.php:126 rt_transfer_payment.php:303
+msgid "Account number"
+msgstr "Número de cuenta"
+
+#: rt_transfer_payment.php:127 rt_transfer_payment.php:307
+msgid "Account number CCI"
+msgstr "Número de cuenta CCI"
+
+#: rt_transfer_payment.php:124 rt_transfer_payment.php:295
+msgid "Account type"
+msgstr "Tipo de cuenta"
+
+#: rt_transfer_payment.php:234
+msgid "Awaiting Peru Transfer Bank payment"
+msgstr "A la espera del pago del Banco de Transferencia de Perú"
+
+#: rt_transfer_payment.php:123
+msgid "Bank Name"
+msgstr "Nombre del banco"
+
+#: rt_transfer_payment.php:74
+msgid "Description"
+msgstr "Descripción"
+
+#: rt_transfer_payment.php:63
+msgid "Enable bank transfer"
+msgstr "Activar la transferencia bancaria"
+
+#: rt_transfer_payment.php:61
+msgid "Enable/Disable"
+msgstr "Activar/desactivar"
+
+#: rt_transfer_payment.php:84
+#, fuzzy
+#| msgid ""
+#| "Enter the total amount of the order and make the payment. <br>\n"
+#| "                                        Send us the proof of transfer.<br>"
+#| "\n"
+#| "                                        We will verify your payment and "
+#| "complete your order shortly."
+msgid ""
+"Enter the total amount of the order and make the payment. <br>\n"
+"                                        Send us the proof of transfer.<br>\n"
+"                                        We will verify your payment and "
+"complete your order shortly."
+msgstr ""
+"Introduzca el importe total del pedido y realice el pago. <br>\n"
+"Envíenos el comprobante de la transferencia.<br>\n"
+"Verificaremos su pago y completaremos su pedido en breve."
+
+#. Author URI of the plugin
+msgid "https://renzotejada.com/"
+msgstr "https://renzotejada.com/"
+
+#. URI of the plugin
+msgid "https://renzotejada.com/transferencia-bancaria-peru/"
+msgstr "https://renzotejada.com/transferencia-bancaria-peru/"
+
+#: rt_transfer_payment.php:81
+msgid "Instructions"
+msgstr "Instrucciones"
+
+#: rt_transfer_payment.php:83
+msgid "Instructions that will be added to the thank you page and emails."
+msgstr ""
+"Instrucciones que se añadirán a la página de agradecimiento y a los correos "
+"electrónicos."
+
+#: rt_transfer_payment.php:77
+msgid ""
+"Make your payment directly into our bank account. Please use your Order ID "
+"as the payment reference. Your order will not be shipped until the funds "
+"have cleared in our account."
+msgstr ""
+"Realice su pago directamente en nuestra cuenta bancaria. Por favor, utilice "
+"su ID de pedido como referencia de pago. Su pedido no se enviará hasta que "
+"los fondos se hayan liquidado en nuestra cuenta."
+
+#: rt_transfer_payment.php:329
+msgid "Our bank details"
+msgstr "Nuestros datos bancarios"
+
+#: rt_transfer_payment.php:76
+msgid "Payment method description that the customer will see on your checkout."
+msgstr "Descripción del método de pago que el cliente verá en su caja."
+
+#: rt_transfer_payment.php:19
+msgid "Peru Bank Transfer"
+msgstr "Transferencia bancaria en Perú"
+
+#: rt_transfer_payment.php:70
+msgid "Peru bank transfer"
+msgstr "Transferencia bancaria en Perú"
+
+#: rt_transfer_payment.php:158
+msgid "Remove selected account(s)"
+msgstr "Eliminar la(s) cuenta(s) seleccionada(s)"
+
+#. Author of the plugin
+msgid "Renzo Tejada"
+msgstr "Renzo Tejada"
+
+#: rt_transfer_payment.php:128 rt_transfer_payment.php:311
+msgid "Swift"
+msgstr "Swift"
+
+#: rt_transfer_payment.php:69
+msgid "This controls the title which the user sees during checkout."
+msgstr "Esto controla el título que el usuario ve durante el pago."
+
+#: rt_transfer_payment.php:67
+msgid "Title"
+msgstr "Título"
+
+#. Name of the plugin
+msgid "Transferencia Bancaria Perú"
+msgstr "Transferencia Bancaria Perú"
