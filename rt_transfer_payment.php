@@ -1,4 +1,6 @@
 <?php
+if (!defined('ABSPATH'))
+    exit; // Exit if accessed directly
 
 function rt_transfer_peru_add_gateway_class($methods) {
     $methods[] = 'WC_WooTransferPeru_Gateway';
