@@ -2,11 +2,11 @@
 Contributors: renzotejada
 Tags: transferencia, banco, bank, perú
 Requires at least: 5.2
-Tested up to: 5.7.2
+Tested up to: 5.9
 Stable tag: trunk
 Requires PHP: 5.6
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+License: GNU General Public License v3.0
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 This plugin adds the payment method : Peruvian Bank Transfer.
 
@@ -95,6 +95,13 @@ This acronym stands for Interbank Account Code
 
 
 == Changelog ==
+
+= 0.0.4 (27/01/2022) =
+Fix: validando versión WC 6.1.1.
+Fix: validando versión WP 5.9.
+
+= 0.0.3 (15/06/2021) =
+Fix: actualizando readme de versión de gpl.
 
 = 0.0.2 (14/06/2021) =
 Fix: validando versión WC 5.4.1.
