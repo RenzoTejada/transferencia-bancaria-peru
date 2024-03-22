@@ -1,8 +1,8 @@
 === Transferencia Bancaria Perú ===
-Contributors: renzotejada, drplugins
+Contributors: renzotejada, drplugins, alexistejada
 Tags: transferencia, banco, bank, perú
 Requires at least: 5.2
-Tested up to: 6.1.1
+Tested up to: 6.4.3
 Stable tag: trunk
 Requires PHP: 5.6
 License: GPLv2 or later
@@ -96,6 +96,10 @@ This acronym stands for Interbank Account Code
 
 
 == Changelog ==
+
+= 0.0.7 (22/03/2024) =
+Fix: validando versión WC 8.7.0
+Fix: validando versión WP 6.4.3
 
 = 0.0.6 (06/12/2022) =
 Fix: validando versión WC 7.1.0
