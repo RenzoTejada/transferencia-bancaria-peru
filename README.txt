@@ -97,6 +97,10 @@ This acronym stands for Interbank Account Code
 
 == Changelog ==
 
+= 0.0.8 (26/03/2024) =
+Fix: validando versión WC 8.7.0
+Fix: validando versión WP 6.4.3
+
 = 0.0.7 (22/03/2024) =
 Fix: validando versión WC 8.7.0
 Fix: validando versión WP 6.4.3
