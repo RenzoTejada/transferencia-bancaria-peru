@@ -9,7 +9,7 @@
  * Plugin Name:       Transferencia Bancaria Perú
  * Plugin URI:        https://renzotejada.com/transferencia-bancaria-peru/
  * Description:       Accepts payments in person via CC or CCI. More commonly known as direct bank/wire transfer.
- * Version:           0.0.8
+ * Version:           0.0.9
  * Author:            Renzo Tejada
  * Author URI:        https://renzotejada.com/
  * License:           GNU General Public License v3.0

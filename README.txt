@@ -2,7 +2,7 @@
 Contributors: renzotejada, drplugins, alexistejada
 Tags: transferencia, banco, bank, perú
 Requires at least: 5.2
-Tested up to: 6.4.3
+Tested up to: 6.5
 Stable tag: trunk
 Requires PHP: 5.6
 License: GPLv2 or later
@@ -96,6 +96,10 @@ This acronym stands for Interbank Account Code
 
 
 == Changelog ==
+
+= 0.0.9 (05/04/2024) =
+Fix: validando versión WC 8.7.0
+Fix: validando versión WP 6.5
 
 = 0.0.8 (26/03/2024) =
 Fix: validando versión WC 8.7.0
