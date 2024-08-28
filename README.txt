@@ -1,5 +1,5 @@
 === Transferencia Bancaria Perú ===
-Contributors: renzotejada, drplugins, alexistejada
+Contributors: renzotejada, huakotech, alexistejada
 Tags: transferencia, banco, bank, perú
 Requires at least: 5.2
 Tested up to: 6.6.1
