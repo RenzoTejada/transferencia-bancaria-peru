@@ -10,8 +10,6 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin adds the payment method : Peruvian Bank Transfer.
 
-You will find this same information in the readme.txt of the plugin and on our website https://renzotejada.com
-
 == Description ==
 
 This plugin adds the payment method : Peruvian Bank Transfer.
