@@ -2,9 +2,11 @@
 Contributors: renzotejada, huakotech, alexistejada
 Tags: transferencia, banco, bank, perú
 Requires at least: 5.2
-Tested up to: 6.7.1
-Stable tag: 1.2
+Tested up to: 7.1.4
+Stable tag: 1.3.5
 Requires PHP: 7.4
+WC requires at least: 8.2
+WC tested up to: 11.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,7 +95,43 @@ This acronym stands for Interbank Account Code
 1. checkout view
 
 
+== Compatibility notes ==
+The plugin supports the WooCommerce classic checkout and registers an integration for Cart and Checkout Blocks. It uses WooCommerce order APIs for HPOS. Verify your full checkout and emails on a staging store before production rollout; metadata is not a substitute for full runtime testing.
+
 == Changelog ==
+= 1.3.5 (29/10/2026) =
+* Diseño neutral en la página de agradecimiento, con fondo blanco, encabezado negro y tarjetas grises.
+* No afecta las cuentas, el cálculo, los correos ni los estados de los pedidos.
+
+= 1.3.4 (29/10/2026) =
+* Nueva presentación de transferencia en la página Pedido recibido, con importe, referencia y tarjetas bancarias adaptables.
+* Mejor organización de las instrucciones y aviso de confirmación manual.
+* Conserva las notificaciones de correo, cuentas bancarias, ID del método y configuraciones existentes.
+
+
+= 1.3.3 (29/10/2026) =
+* Los encabezados de datos bancarios se distribuyen en varias líneas sin truncarse.
+* Columnas adaptables, corrigiendo anchos desproporcionados y scroll horizontal innecesario.
+* Se conservan datos, identificador del método y opciones existentes.
+
+= 1.3.2 (29/10/2026) =
+* Más espacio visual y mejor separación entre etiquetas, campos y bloques de configuración.
+* Mejora del espaciado interno del panel para una lectura más limpia en escritorio.
+* Ajustes menores de la tarjeta de cuentas bancarias y del formulario administrativo.
+
+= 1.3.1 (29/10/2026) =
+* Mejora de UX/UI en la pantalla de ajustes del método de pago.
+* Ajuste visual en la tabla de cuentas para evitar el scroll horizontal innecesario en escritorios amplios.
+* Nuevo enlace directo “Ajustes” y “Soporte” desde el listado de plugins.
+* Actualización menor de estilos administrativos y readme.
+
+= 1.3.0 (29/10/2026) =
+* Preparada integración para WooCommerce Checkout Blocks preservando el método transfer-peru.
+* Declaración de compatibilidad con HPOS y Cart/Checkout Blocks.
+* Mejoras aisladas de UX/UI en la configuración, banner y enlace de contacto.
+* Protección de compatibilidad para datos bancarios de instalaciones anteriores.
+* Actualización de readme y metadatos; pruebas completas en WP 7.1.4 / WC 11.2.1 pendientes.
+
 = 1.2 (16/01/2025) =
 Fix: validando versión WC 9.5.2
 Fix: validando versión WP 6.7.1

@@ -8,6 +8,7 @@ function rt_transfer_peru_add_gateway_class($methods) {
 }
 
 function rt_transfer_peru_init_gateway_class() {
+    if ( ! class_exists( 'WC_Payment_Gateway' ) || class_exists( 'WC_WooTransferPeru_Gateway' ) ) { return; }
 
     class WC_WooTransferPeru_Gateway extends WC_Payment_Gateway {
 
@@ -21,6 +22,7 @@ function rt_transfer_peru_init_gateway_class() {
             $this->method_title         = __("Peru Bank Transfer", 'transfer-peru');
             $this->method_description   = __("Accepts payments in person via CC or CCI. More commonly known as direct bank/wire transfer.",'transfer-peru');
             $this->method_description   = $this->init_descripcion();
+            $this->supports = array( 'products' );
 
             //Initialize form methods
             $this->init_form_fields();
@@ -40,8 +42,8 @@ function rt_transfer_peru_init_gateway_class() {
                         'account_name'          => $this->get_option( 'account_name' ),
                         'account_number'        => $this->get_option( 'account_number' ),
                         'account_number_cci'    => $this->get_option( 'account_number_cci' ),
-                        'account_bank_name'     => $this->get_option( 'account_bank_name' ),
-                        'account_swift'         => $this->get_option( 'account_swift' ),
+                        'bank_name'             => $this->get_option( 'account_bank_name' ),
+                        'swift'                 => $this->get_option( 'account_swift' ),
                     ),
                 )
             );
@@ -95,6 +97,15 @@ function rt_transfer_peru_init_gateway_class() {
 
         }
 
+        public function admin_options() {
+            $banner = plugins_url( 'assets/admin-banner.webp', __FILE__ );
+            echo '<div class="rt-transfer-panel">';
+            echo '<div class="rt-transfer-banner"><img src="' . esc_url( $banner ) . '" alt="' . esc_attr__( 'Transferencia Bancaria Perú', 'transfer-peru' ) . '" /></div>';
+            echo '<div class="rt-transfer-intro"><h2>' . esc_html__( 'Transferencia Bancaria Perú', 'transfer-peru' ) . '</h2><p>' . esc_html__( 'Configura las cuentas bancarias, el título y las instrucciones para tus clientes. Los cambios se guardan con WooCommerce.', 'transfer-peru' ) . '</p><p class="rt-transfer-intro-note">' . esc_html__( 'Consejo: usa el enlace Ajustes desde la lista de plugins para llegar directo a esta pantalla.', 'transfer-peru' ) . '</p><a class="button" href="https://renzotejada.com/contacto/" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Contacto y soporte', 'transfer-peru' ) . '</a></div>';
+            parent::admin_options();
+            echo '</div>';
+        }
+
         public function init_descripcion()
         {
             return '<div class="rt-header-logo">
@@ -117,8 +128,12 @@ function rt_transfer_peru_init_gateway_class() {
             <tr valign="top">
                 <th scope="row" class="titledesc"><?php esc_html_e( 'Account details:', 'transfer-peru' ); ?></th>
                 <td class="forminp" id="transfer_accounts">
-                    <div class="wc_input_table_wrapper">
-                        <table class="widefat wc_input_table sortable" cellspacing="0">
+                    <div class="wc_input_table_wrapper rt-transfer-table-card">
+                        <div class="rt-transfer-table-head">
+                            <strong><?php esc_html_e( 'Cuentas bancarias', 'transfer-peru' ); ?></strong>
+                            <span><?php esc_html_e( 'Agrega una o varias cuentas para mostrar a tus clientes en el checkout y en el pedido.', 'transfer-peru' ); ?></span>
+                        </div>
+                        <table class="widefat wc_input_table sortable rt-transfer-accounts-table" cellspacing="0">
                             <thead>
                             <tr>
                                 <th class="sort">&nbsp;</th>
@@ -139,12 +154,12 @@ function rt_transfer_peru_init_gateway_class() {
 
                                     echo '<tr class="account">
 										<td class="sort"></td>
-                                        <td><input type="text" value="' . esc_attr( wp_unslash( $account['bank_name'] ) ) . '" name="transfer_bank_name[' . esc_attr( $i ) . ']" /></td>
-										<td><input type="text" value="' . esc_attr( wp_unslash( $account['account_type'] ) ) . '" name="transfer_account_type[' . esc_attr( $i ) . ']" /></td>
-										<td><input type="text" value="' . esc_attr( wp_unslash( $account['account_name'] ) ) . '" name="transfer_account_name[' . esc_attr( $i ) . ']" /></td>
-										<td><input type="text" value="' . esc_attr( $account['account_number'] ) . '" name="transfer_account_number[' . esc_attr( $i ) . ']" /></td>
-										<td><input type="text" value="' . esc_attr( $account['account_number_cci'] ) . '" name="transfer_account_number_cci[' . esc_attr( $i ) . ']" /></td>
-										<td><input type="text" value="' . esc_attr( $account['swift'] ) . '" name="transfer_swift[' . esc_attr( $i ) . ']" /></td>
+                                        <td><input type="text" value="' . esc_attr( wp_unslash( ( $account['bank_name'] ?? '' ) ) ) . '" name="transfer_bank_name[' . esc_attr( $i ) . ']" /></td>
+										<td><input type="text" value="' . esc_attr( wp_unslash( ( $account['account_type'] ?? '' ) ) ) . '" name="transfer_account_type[' . esc_attr( $i ) . ']" /></td>
+										<td><input type="text" value="' . esc_attr( wp_unslash( ( $account['account_name'] ?? '' ) ) ) . '" name="transfer_account_name[' . esc_attr( $i ) . ']" /></td>
+										<td><input type="text" value="' . esc_attr( ( $account['account_number'] ?? '' ) ) . '" name="transfer_account_number[' . esc_attr( $i ) . ']" /></td>
+										<td><input type="text" value="' . esc_attr( ( $account['account_number_cci'] ?? '' ) ) . '" name="transfer_account_number_cci[' . esc_attr( $i ) . ']" /></td>
+										<td><input type="text" value="' . esc_attr( ( $account['swift'] ?? '' ) ) . '" name="transfer_swift[' . esc_attr( $i ) . ']" /></td>
 									</tr>';
                                 }
                             }
@@ -239,7 +254,7 @@ function rt_transfer_peru_init_gateway_class() {
             }
 
             // Remove cart.
-            WC()->cart->empty_cart();
+            if ( WC()->cart ) { WC()->cart->empty_cart(); }
 
             // Return thankyou redirect.
             return array(
@@ -253,12 +268,50 @@ function rt_transfer_peru_init_gateway_class() {
          */
         public function thankyou_page( $order_id )
         {
+            $order = wc_get_order( $order_id );
+            if ( ! $order || 'transfer-peru' !== $order->get_payment_method() ) { return; }
 
+            echo '<section class="rt-transfer-thankyou" aria-label="' . esc_attr__( 'Instrucciones de transferencia bancaria', 'transfer-peru' ) . '">';
+            echo '<div class="rt-transfer-thankyou__header"><span class="rt-transfer-thankyou__eyebrow">' . esc_html__( 'Método de pago seleccionado', 'transfer-peru' ) . '</span>';
+            echo '<h2>' . esc_html__( 'Paga tu pedido mediante transferencia bancaria', 'transfer-peru' ) . '</h2>';
+            echo '<p>' . esc_html__( 'Utiliza los datos bancarios indicados y conserva tu comprobante.', 'transfer-peru' ) . '</p></div>';
+            echo '<div class="rt-transfer-thankyou__body">';
+            echo '<div class="rt-transfer-thankyou__summary"><div><span>' . esc_html__( 'Importe de tu pedido', 'transfer-peru' ) . '</span><strong>' . wp_kses_post( $order->get_formatted_order_total() ) . '</strong></div>';
+            echo '<div><span>' . esc_html__( 'Referencia de pago', 'transfer-peru' ) . '</span><strong>#' . esc_html( $order->get_order_number() ) . '</strong></div></div>';
+            $this->thankyou_bank_cards( $order_id );
             if ( $this->instructions ) {
-                echo wp_kses_post( wpautop( wptexturize( wp_kses_post( $this->instructions ) ) ) );
+                echo '<div class="rt-transfer-thankyou__instructions"><h3>' . esc_html__( 'Instrucciones de pago', 'transfer-peru' ) . '</h3>' . wp_kses_post( wpautop( $this->instructions ) ) . '</div>';
             }
-            $this->bank_details( $order_id );
+            echo '<div class="rt-transfer-thankyou__notice">' . esc_html__( 'Tu pedido permanecerá en espera hasta que el comercio confirme la transferencia.', 'transfer-peru' ) . '</div>';
+            echo '</div></section>';
+        }
 
+        /** Card layout for the order-received page only; existing emails remain unchanged. */
+        private function thankyou_bank_cards( $order_id )
+        {
+            $accounts = apply_filters( 'woocommerce_transfer_accounts', $this->account_details, $order_id );
+            if ( ! is_array( $accounts ) || ! $accounts ) { return; }
+            $labels = array(
+                'account_type' => __( 'Tipo de cuenta', 'transfer-peru' ),
+                'account_name' => __( 'Titular', 'transfer-peru' ),
+                'account_number' => __( 'Número de cuenta', 'transfer-peru' ),
+                'account_number_cci' => __( 'CCI', 'transfer-peru' ),
+                'swift' => __( 'SWIFT', 'transfer-peru' ),
+            );
+            echo '<h3 class="rt-transfer-thankyou__section-title">' . esc_html__( 'Datos bancarios', 'transfer-peru' ) . '</h3>';
+            echo '<div class="rt-transfer-thankyou__cards">';
+            foreach ( $accounts as $account ) {
+                $account = (array) $account;
+                $rows = '';
+                foreach ( $labels as $key => $label ) {
+                    if ( ! isset( $account[ $key ] ) || '' === trim( (string) $account[ $key ] ) ) { continue; }
+                    $rows .= '<div class="rt-transfer-thankyou__detail"><dt>' . esc_html( $label ) . '</dt><dd>' . esc_html( $account[ $key ] ) . '</dd></div>';
+                }
+                if ( '' === $rows ) { continue; }
+                $bank = ! empty( $account['bank_name'] ) ? $account['bank_name'] : __( 'Cuenta bancaria', 'transfer-peru' );
+                echo '<article class="rt-transfer-thankyou__card"><h4>' . esc_html( $bank ) . '</h4><dl>' . wp_kses_post( $rows ) . '</dl></article>';
+            }
+            echo '</div>';
         }
 
         /**
@@ -283,8 +336,8 @@ function rt_transfer_peru_init_gateway_class() {
                 foreach ( $transfer_accounts as $transfer_account ) {
                     $transfer_account = (object) $transfer_account;
 
-                    if ( $transfer_account->bank_name ) {
-                        $account_html .= '<h3 class="wc-transfer-bank-details-bank-name">' . wp_kses_post( wp_unslash( $transfer_account->bank_name ) ) . ':</h3>' . PHP_EOL;
+                    if ( ( $transfer_account->bank_name ?? '' ) ) {
+                        $account_html .= '<h3 class="wc-transfer-bank-details-bank-name">' . wp_kses_post( wp_unslash( ( $transfer_account->bank_name ?? '' ) ) ) . ':</h3>' . PHP_EOL;
                     }
 
                     $account_html .= '<ul class="wc-transfer-bank-details order_details transfer_details">' . PHP_EOL;
@@ -295,23 +348,23 @@ function rt_transfer_peru_init_gateway_class() {
                         array(
                             'account_type' => array(
                                 'label' => __( 'Account type', 'transfer-peru' ),
-                                'value' => $transfer_account->account_type,
+                                'value' => ( $transfer_account->account_type ?? '' ),
                             ),
                             'account_name' => array(
                                 'label' => __( 'Account name', 'transfer-peru' ),
-                                'value' => $transfer_account->account_name,
+                                'value' => ( $transfer_account->account_name ?? '' ),
                             ),
                             'account_number' => array(
                                 'label' => __( 'Account number', 'transfer-peru' ),
-                                'value' => $transfer_account->account_number,
+                                'value' => ( $transfer_account->account_number ?? '' ),
                             ),
                             'account_number_cci' => array(
                                 'label' => __( 'Account number CCI', 'transfer-peru' ),
-                                'value' => $transfer_account->account_number_cci,
+                                'value' => ( $transfer_account->account_number_cci ?? '' ),
                             ),
                             'swift'            => array(
                                 'label' => __( 'Swift', 'transfer-peru' ),
-                                'value' => $transfer_account->swift,
+                                'value' => ( $transfer_account->swift ?? '' ),
                             ),
                         ),
                         $order_id
@@ -343,7 +396,7 @@ function rt_transfer_peru_init_gateway_class() {
          */
         public function rt_transfer_peru_email_steps( $order, $sent_to_admin, $plain_text = false )
         {
-            if ( ! $sent_to_admin && 'transfer-peru' === $order->get_payment_method() && $order->has_status( 'on-hold' ) ) {
+            if ( $order && ! $sent_to_admin && 'transfer-peru' === $order->get_payment_method() && $order->has_status( 'on-hold' ) ) {
                 if ( $this->instructions ) {
                     echo wp_kses_post( wpautop( wptexturize( $this->instructions ) ) . PHP_EOL );
                 }

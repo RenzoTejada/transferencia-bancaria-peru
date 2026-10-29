@@ -1,0 +1,101 @@
+/* Only loaded in the settings screen of Transferencia Bancaria Perú. */
+.rt-transfer-panel{max-width:1160px}
+.rt-transfer-banner{border:1px solid #dce8df;border-radius:12px;overflow:hidden;background:#f5fff6;margin:14px 0 18px}
+.rt-transfer-banner img{display:block;max-width:100%;width:100%;height:auto}
+.rt-transfer-intro{background:#fff;border:1px solid #e1e6e2;border-radius:14px;padding:22px 26px;margin:16px 0 18px;box-shadow:0 1px 0 rgba(16,24,40,.02)}
+.rt-transfer-intro h2{margin:0 0 8px!important;font-size:21px}
+.rt-transfer-intro p{color:#56615a;margin:0 0 12px}
+.rt-transfer-intro-note{margin:0 0 12px;color:#6b7a70;font-size:13px}
+
+.rt-transfer-panel .woocommerce table.form-table,
+.rt-transfer-panel .form-table{
+  width:100%;
+  background:#fff;
+  border:1px solid #e1e6e2;
+  border-radius:14px;
+  border-collapse:separate;
+  border-spacing:0;
+  padding:24px 28px;
+  margin:18px 0 20px;
+  box-sizing:border-box;
+}
+.rt-transfer-panel .form-table tr:first-child th,
+.rt-transfer-panel .form-table tr:first-child td{padding-top:10px}
+.rt-transfer-panel .form-table tr:not(:last-child) > th,
+.rt-transfer-panel .form-table tr:not(:last-child) > td{border-bottom:1px solid #eef1ee}
+.rt-transfer-panel .form-table th{width:210px;padding:22px 26px 22px 6px;vertical-align:top;font-weight:600}
+.rt-transfer-panel .form-table td{padding:20px 8px 22px 22px;vertical-align:top}
+.rt-transfer-panel .form-table td .description{margin-top:8px;color:#69756e}
+.rt-transfer-panel .form-table input[type=text],
+.rt-transfer-panel .form-table textarea,
+.rt-transfer-panel .form-table select{border-radius:8px;box-shadow:none}
+.rt-transfer-panel .form-table textarea{min-height:98px}
+.rt-transfer-panel .wc_input_table_wrapper{margin-top:8px;overflow-x:auto}
+.rt-transfer-panel .wc_input_table input{min-width:130px}
+.rt-transfer-panel .woocommerce-save-button{border-radius:6px}
+
+.rt-transfer-table-card{background:#f8fbf8;border:1px solid #e1e6e2;border-radius:14px;padding:18px 16px 16px;margin-top:6px;overflow-x:visible}
+.rt-transfer-table-head{display:flex;flex-direction:column;gap:4px;margin:0 0 14px}
+.rt-transfer-table-head strong{font-size:14px;color:#1d2327}
+.rt-transfer-table-head span{font-size:12px;color:#66736c}
+.rt-transfer-accounts-table{table-layout:fixed;width:100%;margin:0;border-radius:10px;overflow:hidden}
+.rt-transfer-accounts-table thead th{white-space:normal;line-height:1.35;padding:12px 10px;background:#fff}
+.rt-transfer-accounts-table tbody td,
+.rt-transfer-accounts-table tfoot th{padding:10px}
+.rt-transfer-accounts-table .sort{width:32px}
+.rt-transfer-accounts-table input[type=text]{width:100%;min-width:0!important;padding:8px 10px;box-sizing:border-box}
+#transfer_accounts .wc_input_table_wrapper .button{border-radius:6px}
+
+@media (min-width: 1200px){
+  .rt-transfer-accounts-table th:nth-child(2), .rt-transfer-accounts-table td:nth-child(2){width:18%}
+  .rt-transfer-accounts-table th:nth-child(3), .rt-transfer-accounts-table td:nth-child(3){width:15%}
+  .rt-transfer-accounts-table th:nth-child(4), .rt-transfer-accounts-table td:nth-child(4){width:18%}
+  .rt-transfer-accounts-table th:nth-child(5), .rt-transfer-accounts-table td:nth-child(5){width:16%}
+  .rt-transfer-accounts-table th:nth-child(6), .rt-transfer-accounts-table td:nth-child(6){width:19%}
+  .rt-transfer-accounts-table th:nth-child(7), .rt-transfer-accounts-table td:nth-child(7){width:14%}
+}
+@media (max-width: 1199px){
+  .rt-transfer-panel{max-width:none}
+  .rt-transfer-panel .form-table{padding:18px}
+  .rt-transfer-panel .form-table th,
+  .rt-transfer-panel .form-table td{display:block;width:100%;padding-right:0;padding-left:0}
+  .rt-transfer-panel .form-table th{padding-bottom:8px}
+  .rt-transfer-panel .form-table td{padding-top:0;padding-bottom:18px}
+  .rt-transfer-table-card{overflow-x:auto}
+  .rt-transfer-accounts-table{min-width:860px}
+}
+
+/* 1.3.3 – WooCommerce table headers: allow readable two/three-line labels. */
+.rt-transfer-panel #transfer_accounts .rt-transfer-accounts-table{
+  width:100% !important; min-width:0 !important; max-width:100%; table-layout:fixed !important;
+  border-collapse:separate;
+}
+.rt-transfer-panel #transfer_accounts .rt-transfer-accounts-table th,
+.rt-transfer-panel #transfer_accounts .rt-transfer-accounts-table thead th{
+  width:auto !important; min-width:0 !important; max-width:none !important;
+  white-space:normal !important; overflow-wrap:break-word !important;
+  word-break:normal !important; text-overflow:clip !important;
+  overflow:visible !important; vertical-align:middle;
+  line-height:1.5 !important; font-size:12px; padding:12px 6px !important;
+  box-sizing:border-box;
+}
+.rt-transfer-panel #transfer_accounts .rt-transfer-accounts-table th.sort{
+  width:30px !important; padding:8px 3px !important;
+}
+.rt-transfer-panel #transfer_accounts .rt-transfer-accounts-table td{
+  min-width:0 !important; padding:10px 5px !important;
+}
+.rt-transfer-panel #transfer_accounts .rt-transfer-accounts-table td input[type=text]{
+  min-width:0 !important; max-width:100% !important; width:100% !important;
+}
+.rt-transfer-panel #transfer_accounts .rt-transfer-table-card,
+.rt-transfer-panel #transfer_accounts .wc_input_table_wrapper{
+  max-width:100%; overflow-x:visible;
+}
+@media(max-width:1199px){
+ .rt-transfer-panel #transfer_accounts .rt-transfer-accounts-table{min-width:0 !important}
+}
+@media(max-width:650px){
+ .rt-transfer-panel #transfer_accounts .rt-transfer-table-card{overflow-x:auto}
+ .rt-transfer-panel #transfer_accounts .rt-transfer-accounts-table{min-width:650px !important}
+}
